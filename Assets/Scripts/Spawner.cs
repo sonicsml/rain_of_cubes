@@ -34,7 +34,17 @@ public class Spawner : MonoBehaviour
     {
         for (var i = 0; i < _spawnAmout; i++)
         {
-            var cube = _usePool ? _pool.Get() : Instantiate(_prefab);
+            Cube cube;
+
+            if (_usePool)
+            {
+                cube = _pool.Get();
+            }
+            else
+            {
+                cube = Instantiate(_prefab);
+            }
+
             cube.transform.position = transform.position + Random.insideUnitSphere * 7;
             cube.Init(DestroyCube);
         }
@@ -47,6 +57,9 @@ public class Spawner : MonoBehaviour
             cube.ResetCube();
             _pool.Release(cube);
         }
-        else Destroy(cube.gameObject);
+        else
+        {
+            Destroy(cube.gameObject);
+        }
     }
 }
