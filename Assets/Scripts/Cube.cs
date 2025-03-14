@@ -32,7 +32,7 @@ public class Cube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out MeshRenderer Platform))
+        if (collision.transform.TryGetComponent(out Platform platform))
         {
             _hasCollided = true;
          
